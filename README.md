@@ -201,7 +201,7 @@ Once connected via SSH, run the following commands to install the necessary soft
 
 2.  Open a web browser and navigate to your instance's public IP address on port 5000:
     ```
-    (http://3.239.13.130:5000/)
+    http://YOUR_PUBLIC_IP_ADDRESS:5000
     ```
     You should now see your Athena Orders Dashboard!
 <img width="1902" height="967" alt="12-final" src="https://github.com/user-attachments/assets/5b7f3188-144a-43a7-93fd-6cfd38021d34" />
