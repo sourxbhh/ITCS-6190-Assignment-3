@@ -10,6 +10,8 @@ First, set up an S3 bucket with the following folder structure to manage the dat
     * **`raw/`**: For incoming raw data files.
     * **`processed/`**: For cleaned and filtered data output by the Lambda function.
     * **`enriched/`**: For storing athena query results.
+<img width="1918" height="906" alt="1-bucket" src="https://github.com/user-attachments/assets/5b7d382c-7683-42f5-b249-09526ac95fb7" />
+
 
 ---
 
@@ -44,6 +46,8 @@ Create the following IAM roles to grant AWS services the necessary permissions t
     * `AmazonAthenaFullAccess`
 3.  Name the role (e.g., `EC2-Athena-Dashboard-Role`) and create it.
 
+<img width="1903" height="913" alt="image" src="https://github.com/user-attachments/assets/eabdc8bf-4e0d-4b55-b90d-f4e410304d98" />
+
 ---
 
 ## 3. Create the Lambda Function ⚙️
@@ -59,6 +63,10 @@ This function will automatically process files uploaded to the `raw/` S3 folder.
 7.  Click **Create function**.
 8.  In the **Code source** editor, replace the default code with LambdaFunction.py code for processing the raw data.
 
+<img width="1918" height="907" alt="3-Lambda function" src="https://github.com/user-attachments/assets/5d9fe280-85c2-42ef-be4a-cc4dd9bca121" />
+<img width="1918" height="911" alt="4-Lambda py" src="https://github.com/user-attachments/assets/5172fb55-6f0f-4043-8cb3-1004309b80d6" />
+
+
 ---
 
 ## 4. Configure the S3 Trigger ⚡
@@ -73,8 +81,14 @@ Set up the S3 trigger to invoke your Lambda function automatically.
 6.  **Suffix (Recommended)**: Enter `.csv`.
 7.  Check the acknowledgment box and click **Add**.
 
+<img width="1897" height="902" alt="5-trigger" src="https://github.com/user-attachments/assets/52f56e3a-73b1-4f88-8870-c354fd368d4c" />
+
+
 --- 
 **Start Processing of Raw Data**: Now upload the Orders.csv file into the `raw/` folder of the S3 Bucket. This will automatically trigger the Lambda function.
+
+<img width="1918" height="903" alt="6-processed orders" src="https://github.com/user-attachments/assets/edd30003-a234-4c9f-9134-83644a120e1a" />
+
 ---
 
 ## 5. Create a Glue Crawler 🕸️
@@ -89,6 +103,8 @@ The crawler will scan your processed data and create a data catalog, making it q
 6.  **Output**: Click **Add database** and create a new database named `orders_db`.
 7.  Finish the setup and run the crawler. It will create a new table in your `orders_db` database.
 
+<img width="1918" height="897" alt="9-crawler cloudwatch" src="https://github.com/user-attachments/assets/87b4f7fe-7774-4009-b3d4-d10549f0ed43" />
+
 ---
 
 ## 6. Query Data with Amazon Athena 🔍
@@ -101,6 +117,10 @@ Navigate to the **Athena** service. Ensure your data source is set to `AwsDataCa
 * **Order Status Dashboard**: Summarize orders based on their status (`shipped` vs. `confirmed`).
 * **Average Order Value (AOV) per Customer**: Find the average amount spent per order for each customer.
 * **Top 10 Largest Orders in February 2025**: Retrieve the highest-value orders from a specific month.
+
+<img width="1898" height="901" alt="10-athena queries" src="https://github.com/user-attachments/assets/64813945-d593-467c-9fdc-455ecb346d61" />
+<img width="1897" height="905" alt="11-enrichedFolder" src="https://github.com/user-attachments/assets/f595e572-e157-444a-a44c-822737451045" />
+
 
 ---
 
@@ -181,9 +201,10 @@ Once connected via SSH, run the following commands to install the necessary soft
 
 2.  Open a web browser and navigate to your instance's public IP address on port 5000:
     ```
-    http://YOUR_PUBLIC_IP_ADDRESS:5000
+    (http://3.239.13.130:5000/)
     ```
     You should now see your Athena Orders Dashboard!
+<img width="1902" height="967" alt="12-final" src="https://github.com/user-attachments/assets/5b7f3188-144a-43a7-93fd-6cfd38021d34" />
 
 ---
 
